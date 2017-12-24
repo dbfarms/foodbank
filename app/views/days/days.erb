@@ -1,0 +1,34 @@
+<%Day.all.each do |day| %>
+  <h2><%=day.name%></h2>
+
+  <p>Farmers delivering this day</p>
+  <% farms = [] %>
+  <% banks = [] %>
+  <% Farmer.all.each do |f| %> 
+  <%f.days.each do |d_name| %>
+    <% if d_name.name == day.name %>
+      <%farms << f.name%> 
+    <% end %>
+  <% end %>
+<% end %>
+<ul>
+  <% farms.each do |t| %>
+   <% #binding.pry %>
+    <li><%=t%></li>
+  <% end %>
+</ul>
+<p>Foodbanks accepting deliveries this day</p>
+<% Foodbank.all.each do |b| %>
+  <%b.days.each do |b_day| %>
+    <% if b_day.name == day.name %>
+        <% banks << b.name %>
+    <% end %>
+  <% end %>
+<% end %>
+<ul>
+  <% banks.each do |r| %>
+    <li><%=r%></li>
+  <% end %>
+</ul>
+
+<% end %>

@@ -9,7 +9,9 @@
   <% end %>
 </ul>
 
-<form method="POST" action="/delete/<%=@farmer.id%>">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="<%=@farmer.id%>" id="<%=@farmer.id%>" value="Delete Farmer"> 
-</form>
+<% if session[:id] == @farmer.id %>
+  <form method="POST" action="/delete/<%=@farmer.id%>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" name="<%=@farmer.id%>" id="<%=@farmer.id%>" value="Delete Farmer"> 
+  </form>
+<% end %>

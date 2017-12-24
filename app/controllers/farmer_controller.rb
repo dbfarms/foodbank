@@ -61,7 +61,7 @@ class FarmerController < ApplicationController
     params["days"].each do |day|
       @farmer.days << Day.find(day)  
     end 
-    
+    @farmer.save 
     redirect "/farmers/#{@farmer.id}"
   end 
   

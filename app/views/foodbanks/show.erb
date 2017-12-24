@@ -1,9 +1,12 @@
 <h1><%=@foodbank.name%></h1>
 
-<h3>Delivery Days</h3>
+<h3>Accepting Food Deliveries on the Following Days</h3>
  
 <ul>
   <% @foodbank.days.each do |day| %>
   <li><%=day.name%></li>
   <% end %>
 </ul>
+<a href="/foodbanks/<%=@foodbank.id%>/edit">Add pickup days</a>
+
+<a href="/foodbanks">Go back to Foodbanks</a>

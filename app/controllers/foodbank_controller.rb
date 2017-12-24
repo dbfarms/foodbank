@@ -31,15 +31,23 @@ class FoodbankController < ApplicationController
   end 
   
   patch '/foodbanks/:id' do 
-    
-    #binding.pry
     @foodbank = Foodbank.find(params["id"])
-    @foodbank.name = params["name"]
-    @foodbank.days = [] 
     
-    params["days"].each do |day|
-      @foodbank.days << Day.find(day)  
+    if params["name"] != nil && params["name"] != ""
+      binding.pry  
+      @foodbank.name = params["name"]
     end 
+    
+    if params["days"] != nil 
+      @foodbank.days = [] 
+      
+      params["days"].each do |day|
+        @foodbank.days << Day.find(day)  
+      end
+      
+    end 
+  
+    @foodbank.save 
     
     redirect "/foodbanks/#{@foodbank.id}"
   end 

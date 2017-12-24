@@ -30,6 +30,10 @@ class ApplicationController < Sinatra::Base
       erb :index
     end 
   end 
+  
+  get '/calendar' do 
+    erb :'days/days' 
+  end 
  
   post '/index' do 
     #binding.pry
@@ -39,16 +43,18 @@ class ApplicationController < Sinatra::Base
       redirect '/index'
     else 
       #binding.pry
-      @farmer = Farmer.create(:name => params["name"], :password =>["password"])
+      @farmer = Farmer.create(:name => params["name"], :login => params["name"], :password =>["password"])
       @farmer.attributes.each do |att|
+        #binding.pry
         if att[1] == "" || att[1] == nil
-          redirect "/signup"
-        else  
-          @farmer.save 
-          session[:id] = @farmer.id 
-          redirect '/index'
-        end
+          redirect "/login"
+        end 
       end 
+      
+      @farmer.save 
+      session[:id] = @farmer.id 
+      redirect '/index'
+      
     end 
   end 
   
