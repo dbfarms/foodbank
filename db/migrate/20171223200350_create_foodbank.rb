@@ -1,0 +1,7 @@
+class CreateFoodbank < ActiveRecord::Migration[5.1]
+  def change
+    create_table :foodbanks do |t| 
+      t.string :name 
+    end 
+  end
+end
