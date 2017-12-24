@@ -1,0 +1,19 @@
+<h1>Farmers</h1>
+
+<ul>
+  <% Farmer.all.each do |farm| %>
+    <li><a href="farmers/<%= farm.id%>"><%= farm.name%></a></li>
+  <% end %>
+</ul>
+
+<br>
+
+<a href="farmers/new">To add farmer</a>
+
+<br>
+<a href="farmers/edit">To edit farmer info:</a>
+
+<br></br><br>
+
+<a href="../foodbanks">Foodbanks</a>
+<a href="../days">Delivery Calendar</a>

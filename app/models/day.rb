@@ -1,5 +1,6 @@
 class Day < ActiveRecord::Base
-  has_many :farmers 
-  has_many :foodbanks 
+  belongs_to :farmer 
+  has_many :days_banks
+  has_many :foodbanks, through: :days_banks
   
 end 

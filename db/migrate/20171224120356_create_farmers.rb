@@ -1,7 +1,7 @@
 class CreateFarmers < ActiveRecord::Migration[5.1]
-  def change
+  def change 
     create_table :farmers do |t|
-      t.string :name 
+      t.string :name
     end 
-  end
+  end 
 end

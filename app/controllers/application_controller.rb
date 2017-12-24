@@ -9,4 +9,5 @@ class ApplicationController < Sinatra::Base
     erb :index 
   end 
   
+  
 end 

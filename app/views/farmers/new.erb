@@ -1,0 +1,16 @@
+
+<form method="POST" action="/farmers">
+<h2>Add farmer</h2>
+  <label>Name of Farms: </label>
+  <input type="text" name="name">  
+  <br><br><br>
+  
+  <h3>Days available for delivery</h3>
+  <%Day.all.each do |d| %>
+    <input id="<%=d.name%>" type="checkbox" name="days[]" value="<%=d.id%>">
+    <label for="<%d.name%>"><%=d.name%></label>
+  <% end %>
+  <br>
+  <input type="submit" value="add">
+
+</form>
