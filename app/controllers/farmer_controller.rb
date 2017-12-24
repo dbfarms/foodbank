@@ -26,12 +26,14 @@ class FarmerController < ApplicationController
   end 
   
   delete'/delete/:id' do 
-    binding.pry
+    #binding.pry
     if session[:id] == params["id"].to_i
-      binding.pry
+      #binding.pry
       @farmer = Farmer.delete(params["id"])
-      redirect '/'
+      flash[:message] = "Successfully deleted account."
+      redirect '/login'
     else 
+      flash[:message] = "you can only delete your own farm's account from the list."
       redirect '/farmers'
     end 
   end 
