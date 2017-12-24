@@ -1,7 +1,7 @@
 
-<form method="POST" action="/farmers">
-<h2>Add farmer</h2>
-  <label>Name of Farms: </label>
+<form method="POST" action="/foodbanks">
+<h2>Add foodbank</h2>
+  <label>Name of Foodbank: </label>
   <input type="text" name="name">  
   <br><br><br>
   
@@ -9,7 +9,7 @@
   
   <br><br><br>
   
-  <h3>Days available for delivery</h3>
+  <h3>Days available for pickup</h3>
   <%Day.all.each do |d| %>
     <input id="<%=d.name%>" type="checkbox" name="days[]" value="<%=d.id%>">
     <label for="<%d.name%>"><%=d.name%></label>

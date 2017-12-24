@@ -1,0 +1,17 @@
+
+<form method="POST" action="/farmers/<%=@farmer.id%>">
+  <input type="hidden" name="_method" value="patch">
+  
+  <label>Change farm name?: </label>
+  <input type="text" name="name">  
+  <br><br><br>
+  
+  <h3>Change days available for delivery</h3>
+  <%Day.all.each do |d| %>
+    <input type="checkbox" name="days[]" value="<%=d.id%>" id="<%=d.name%>" <%='checked' if @farmer.days.include?(d)%>>
+    <label for="<%d.name%>"><%=d.name%></label>
+  <% end %>
+  <br>
+  <input type="submit" value="edit">
+
+</form>

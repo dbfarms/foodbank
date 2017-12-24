@@ -1,0 +1,9 @@
+<h1><%=@foodbank.name%></h1>
+
+<h3>Delivery Days</h3>
+ 
+<ul>
+  <% @foodbank.days.each do |day| %>
+  <li><%=day.name%></li>
+  <% end %>
+</ul>

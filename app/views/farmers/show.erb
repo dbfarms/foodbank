@@ -1,0 +1,15 @@
+
+<h1><%=@farmer.name%></h1>
+
+<h3>Delivery Days</h3>
+ 
+<ul>
+  <% @farmer.days.each do |day| %>
+  <li><%=day.name%></li>
+  <% end %>
+</ul>
+
+<form method="POST" action="/delete/<%=@farmer.id%>">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="<%=@farmer.id%>" id="<%=@farmer.id%>" value="Delete Farmer"> 
+</form>

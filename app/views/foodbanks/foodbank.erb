@@ -1,0 +1,17 @@
+<h1>Foodbanks</h1>
+
+<ul>
+  <% Foodbank.all.each do |bank| %>
+    <li><a href="foodbanks/<%= bank.id%>"><%= bank.name%></a></li>
+  <% end %>
+</ul>
+
+<br>
+
+<br>
+<a href="foodbanks/edit">To edit foodbank info:</a>
+
+<br></br><br>
+
+<a href="../farmers">See Farmers</a>
+<a href="../days">Delivery Calendar</a>
