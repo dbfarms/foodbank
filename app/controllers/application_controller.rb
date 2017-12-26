@@ -34,7 +34,34 @@ class ApplicationController < Sinatra::Base
   get '/calendar' do 
     erb :'days/days' 
   end 
- 
+  
+  post '/login' do 
+    @farmer = Farmer.find_by(:name => params["login"]["name"]) 
+    if @farmer && @farmer.authenticate(params["login"]["password"]) 
+      session[:id] = @farmer.id 
+      redirect '/index'
+    else 
+      redirect '/login'
+    end 
+  end 
+  
+  post '/signup' do 
+    @farmer = Farmer.create(:name => params["signup"]["name"], :password => params["signup"]["password"])
+      @farmer.attributes.each do |att|
+        binding.pry
+        if att[1] == "" || att[1] == nil
+          redirect "/login"
+        end 
+      end 
+      
+      @farmer.save 
+      session[:id] = @farmer.id 
+      redirect '/index'
+      
+  end 
+end 
+
+=begin
   post '/index' do 
     #binding.pry
     @farmer = Farmer.find_by(:name => params["name"]) 
@@ -57,5 +84,5 @@ class ApplicationController < Sinatra::Base
       
     end 
   end 
+=end
   
-end 
